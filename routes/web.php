@@ -14,14 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home', ['name' => 'riyan', 'role' => 'admin']);
+    return view('home', [
+        'name' => 'riyan',
+        'role' => 'test',
+        'buah' => ['semangka', 'nanas', 'pisang', 'mangga', 'jambu', 'jeruk']
+    ]);
 });
 
 // Route::get('/about', function () {
 //     return view('about', ['name' => 'riyan', 'phone' => '0812xxxxx']`);
 // });
 
-Route::view('/about', 'about', ['name' => 'riyan', 'phone' => '0812xxxxx']);
+Route::get('/about', function () {
+    return view('about', [
+        'name' => 'riyan',
+        'phone' => '08xxx'
+    ]);
+});
 
 // route with paramater
 Route::get('/product/{id}', function ($id) {
