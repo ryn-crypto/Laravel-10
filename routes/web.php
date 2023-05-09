@@ -26,10 +26,7 @@ Route::get('/', function () {
 // });
 
 Route::get('/about', function () {
-    return view('about', [
-        'name' => 'riyan',
-        'phone' => '08xxx'
-    ]);
+    return view('about');
 });
 
 // route with paramater
