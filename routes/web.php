@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,3 +63,6 @@ Route::prefix('administrator')->group(function () {
         return ('contact admin');
     });
 });
+
+// route untuk controller 
+Route::get('/students', [StudentController::class, 'index']);
