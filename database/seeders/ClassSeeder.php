@@ -6,6 +6,7 @@ use App\Models\ClassRoom;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class ClassSeeder extends Seeder
 {
@@ -14,10 +15,22 @@ class ClassSeeder extends Seeder
      */
     public function run(): void
     {
-        ClassRoom::insert([
-            'name' => '2 B',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+        Schema::disableForeignKeyConstraints();
+        ClassRoom::truncate();
+        Schema::enableForeignKeyConstraints();
+
+        // siapkan data untuk di insert ke database
+        $data = [
+            ['name' => '1 A'],
+            ['name' => '1 B'],
+            ['name' => '1 C'],
+            ['name' => '2 A'],
+        ];
+
+        foreach ($data as $d) {
+            ClassRoom::insert([
+                'name' => $d['name']
+            ]);
+        }
     }
 }
