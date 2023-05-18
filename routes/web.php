@@ -67,6 +67,9 @@ Route::prefix('administrator')->group(function () {
 
 // route untuk controller students
 Route::get('/students', [StudentController::class, 'index']);
+Route::get('/students/insert', [StudentController::class, 'insert']);
+Route::get('/students/update', [StudentController::class, 'update']);
+Route::get('/students/delete', [StudentController::class, 'delete']);
 
 // route untuk controller class
 Route::get('/class', [ClassController::class, 'index']);

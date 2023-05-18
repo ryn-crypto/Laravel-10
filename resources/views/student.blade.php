@@ -14,6 +14,7 @@
                         <th scope="col">Nis</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Jenis kelamin</th>
+                        <th scope="col">Kelas</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,7 @@
                                     {{ 'Perempuan' }}
                                 @endif
                             </td>
+                            <td> {{ $data->class_id }} </td>
                         </tr>
                     @endforeach
                 </tbody>
