@@ -76,18 +76,17 @@ class StudentController extends Controller
 
         // php native
         // ==========================
-        // $jml_nilai = count($nilai);
-        // $total_nilai = array_sum($nilai);
-        // $rata_rata = $total_nilai / $jml_nilai;
-        // dd($rata_rata);
+        $jml_nilai = count($nilai);
+        $total_nilai = array_sum($nilai);
+        $rata_rata = $total_nilai / $jml_nilai;
 
         // collection
-        // $rata_rata = collect($nilai)->average();
+        $rata_rata = collect($nilai)->average();
 
         // contains = untuk mengetahui isi array (apakah memiliki nilai yang dicari)
-        // $nilai_sempurna = collect($nilai)->contains(function ($value) {
-        //     return $value < 0;
-        // });
+        $nilai_sempurna = collect($nilai)->contains(function ($value) {
+            return $value < 0;
+        });
 
         // diff (untuk melakukan pembandingan antar 2 array)
         $dataA = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
@@ -101,6 +100,22 @@ class StudentController extends Controller
             return $value > 7;
         })->all();
 
-        dd($filter);
+        // plug
+        $biodata = [
+            ['nama' => 'budi', 'umur' => 17],
+            ['nama' => 'ali', 'umur' => 13],
+            ['nama' => 'sujono', 'umur' => 18],
+            ['nama' => 'windi', 'umur' => 19],
+        ];
+
+        $result = collect($biodata)->pluck('umur')->all();
+
+
+        // map (diguankan untuk melakukan mapping)
+        $nilai_x2 = collect($nilai)->map(function ($value) {
+            return $value * 2;
+        })->all();
+
+        dd($nilai_x2);
     }
 }
