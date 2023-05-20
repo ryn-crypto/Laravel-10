@@ -66,10 +66,13 @@ Route::prefix('administrator')->group(function () {
 });
 
 // route untuk controller students
-Route::get('/students', [StudentController::class, 'index']);
-Route::get('/students/insert', [StudentController::class, 'insert']);
-Route::get('/students/update', [StudentController::class, 'update']);
-Route::get('/students/delete', [StudentController::class, 'delete']);
+Route::prefix('/students')->group(function () {
+    Route::get('', [StudentController::class, 'index']);
+    Route::get('/insert', [StudentController::class, 'insert']);
+    Route::get('/update', [StudentController::class, 'update']);
+    Route::get('/delete', [StudentController::class, 'delete']);
+    Route::get('/nilai', [StudentController::class, 'nilai']);
+});
 
 // route untuk controller class
 Route::get('/class', [ClassController::class, 'index']);
