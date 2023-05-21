@@ -10,15 +10,15 @@ class StudentController extends Controller
 {
     public function index()
     {
-        // elequent
-        // -------------------
-        $student = Student::all();
-        return view('student', ['studentList' => $student]);
-
         // query builder
         // -------------------
         // $student = DB::table('students')->get();
         // return view('student', ['studentList' => $student]);
+
+        // elequent
+        // -------------------
+        $student = Student::with('class')->get();
+        return view('student', ['studentList' => $student]);
     }
 
     public function insert()

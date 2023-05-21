@@ -8,7 +8,7 @@
         <div class="container m-5">
             <h3>Daftar Kelas Tersedia</h3>
 
-            <table class="table table-dark table-striped">
+            <table class="table table-dark table-striped text-center">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -21,7 +21,7 @@
                         <tr>
                             <th scope="row"> {{ $loop->iteration }} </th>
                             <td> {{ $data->name }} </td>
-                            <td> - </td>
+                            <td> {{ count($data->students) }} </td>
                         </tr>
                     @endforeach
                 </tbody>

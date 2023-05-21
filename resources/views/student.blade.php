@@ -30,7 +30,7 @@
                                     {{ 'Perempuan' }}
                                 @endif
                             </td>
-                            <td> {{ $data->class_id }} </td>
+                            <td> {{ $data->class['name'] }} </td>
                         </tr>
                     @endforeach
                 </tbody>
