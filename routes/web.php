@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ExtrakurikulerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,5 +75,5 @@ Route::prefix('/students')->group(function () {
     Route::get('/nilai', [StudentController::class, 'nilai']);
 });
 
-// route untuk controller class
-Route::get('/class', [ClassController::class, 'index']);
+// route untuk controller ekstrakurikuler
+Route::get('/extrakurikuler', [ExtrakurikulerController::class, 'index']);
