@@ -30,6 +30,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/class">Class</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/extrakurikuler">Extrakurikuler</a>
+                    </li>
                 </ul>
             </div>
         </div>
