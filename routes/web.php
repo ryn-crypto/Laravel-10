@@ -75,5 +75,8 @@ Route::prefix('/students')->group(function () {
     Route::get('/nilai', [StudentController::class, 'nilai']);
 });
 
+// route untuk class
+Route::get('/class', [ClassController::class, 'index']);
+
 // route untuk controller ekstrakurikuler
 Route::get('/extrakurikuler', [ExtrakurikulerController::class, 'index']);

@@ -15,6 +15,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Jenis kelamin</th>
                         <th scope="col">Kelas</th>
+                        <th scope="col">Exrakurikuler</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,11 @@
                                 @endif
                             </td>
                             <td> {{ $data->class['name'] }} </td>
+                            <td>
+                                @foreach ($data->extrakurikulers as $data)
+                                    {{ $data['name'] }},
+                                @endforeach
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
