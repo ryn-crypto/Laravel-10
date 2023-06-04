@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ExtrakurikulerController;
+use App\Http\Controllers\TeachersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +81,6 @@ Route::get('/class', [ClassController::class, 'index']);
 
 // route untuk controller ekstrakurikuler
 Route::get('/extrakurikuler', [ExtrakurikulerController::class, 'index']);
+
+// route untuk controller teachers
+Route::get('/teachers', [TeachersController::class, 'index']);

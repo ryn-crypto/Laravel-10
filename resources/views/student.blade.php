@@ -15,6 +15,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Jenis kelamin</th>
                         <th scope="col">Kelas</th>
+                        <th scope="col">Wali kelas</th>
                         <th scope="col">Exrakurikuler</th>
                     </tr>
                 </thead>
@@ -31,7 +32,8 @@
                                     {{ 'Perempuan' }}
                                 @endif
                             </td>
-                            <td> {{ $data->class['name'] }} </td>
+                            <td> {{ $data->class->name }} </td>
+                            <td>{{ $data->class->teacher->name }}</td>
                             <td>
                                 @foreach ($data->extrakurikulers as $data)
                                     {{ $data['name'] }},

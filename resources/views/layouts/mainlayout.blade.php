@@ -25,6 +25,9 @@
                         <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/teachers">Tachers</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/students">Students</a>
                     </li>
                     <li class="nav-item">

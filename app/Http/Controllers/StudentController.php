@@ -17,7 +17,7 @@ class StudentController extends Controller
 
         // elequent
         // -------------------
-        $student = Student::with(['class', 'extrakurikulers'])->get();
+        $student = Student::with(['class.teacher', 'extrakurikulers'])->get();
         return view('student', ['studentList' => $student]);
     }
 
