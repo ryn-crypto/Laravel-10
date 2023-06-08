@@ -13,8 +13,7 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama Kelas</th>
-                        <th scope="col">Wali Kelas</th>
-                        <th scope="col">jumlah siswa</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,8 +21,7 @@
                         <tr>
                             <th scope="row"> {{ $loop->iteration }} </th>
                             <td> {{ $data->name }} </td>
-                            <td> {{ $data->teacher->name }} </td>
-                            <td> {{ count($data->students) }} </td>
+                            <td><a class="btn btn-outline-warning" href="">Detail</a></td>
                         </tr>
                     @endforeach
                 </tbody>

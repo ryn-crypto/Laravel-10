@@ -13,6 +13,7 @@
                         <th scope="col">No</th>
                         <th scope="col">NIP</th>
                         <th scope="col">Nama</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,6 +22,7 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>-</td>
                             <td>{{ $data->name }}</td>
+                            <td><a class="btn btn-outline-primary" href="">Detail</a></td>
                         </tr>
                     @endforeach
                 </tbody>

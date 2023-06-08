@@ -12,7 +12,7 @@ class ClassController extends Controller
         // lazy load
         // $class = ClassRoom::all();
         // eager load
-        $class = ClassRoom::with('students', 'teacher')->get();
+        $class = ClassRoom::get();
         return view('classroom', ['classList' => $class]);
     }
 }

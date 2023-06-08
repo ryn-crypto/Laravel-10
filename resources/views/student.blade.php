@@ -14,9 +14,7 @@
                         <th scope="col">Nis</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Jenis kelamin</th>
-                        <th scope="col">Kelas</th>
-                        <th scope="col">Wali kelas</th>
-                        <th scope="col">Exrakurikuler</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,13 +30,7 @@
                                     {{ 'Perempuan' }}
                                 @endif
                             </td>
-                            <td> {{ $data->class->name }} </td>
-                            <td>{{ $data->class->teacher->name }}</td>
-                            <td>
-                                @foreach ($data->extrakurikulers as $data)
-                                    {{ $data['name'] }},
-                                @endforeach
-                            </td>
+                            <td><a class="btn btn-outline-warning" href="students/{{ $data->id }}">Detail</a></td>
                         </tr>
                     @endforeach
                 </tbody>

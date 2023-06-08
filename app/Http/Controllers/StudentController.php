@@ -17,7 +17,7 @@ class StudentController extends Controller
 
         // elequent
         // -------------------
-        $student = Student::with(['class.teacher', 'extrakurikulers'])->get();
+        $student = Student::get();
         return view('student', ['studentList' => $student]);
     }
 
@@ -117,5 +117,12 @@ class StudentController extends Controller
         })->all();
 
         dd($nilai_x2);
+    }
+
+    public function show($id) 
+    {
+        $student = Student::with(['class'])
+            ->findOrFail($id);
+        return view('student-detail', ['detail' => $student]);
     }
 }

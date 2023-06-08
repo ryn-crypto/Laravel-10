@@ -28,25 +28,5 @@
             @default
                 <a class="btn btn-outline-danger" href="">Hubungi admin</a>
         @endswitch
-
-        <hr>
-        <h3>penggunaan foreach untuk menampilkan array</h3>
-
-        <table class="table table-primary">
-            <thead>
-                <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Nama</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($buah as $b)
-                    <tr>
-                        <td>{{ $loop->iteration }}.</td>
-                        <td class="text-capitalize">{{ $b }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
     </div>
 @endsection

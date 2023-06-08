@@ -12,7 +12,7 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama Ekskul</th>
-                        <th scope="col">Jumlah Peminat</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,7 +20,7 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $data->name }}</td>
-                            <td>{{ count($data->students) }}</td>
+                            <td><a class="btn btn-outline-warning" href="">Detail</a></td>
                         </tr>
                     @endforeach
                 </tbody>
