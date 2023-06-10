@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -121,8 +122,31 @@ class StudentController extends Controller
 
     public function show($id) 
     {
-        $student = Student::with(['class'])
+        $student = Student::with(['class.teacher', 'extrakurikulers'])
             ->findOrFail($id);
         return view('student-detail', ['detail' => $student]);
+    }
+
+    public function create() 
+    {
+        $class = ClassRoom::select('id', 'name')->get();
+        return view('students-create', ['class' => $class]);
+    }
+
+    public function store(Request $request) 
+    {
+        // $student = new Student;
+        // $student-> name = $request->name;
+        // $student-> gender = $request->gender;
+        // $student-> nis = $request->nis;
+        // $student-> class_id = $request->class_id;
+
+        // $student->save();
+
+        // =========================
+        // menggunakan must asignment
+        $student = Student::create($request->all());
+
+        return redirect('/students');
     }
 }

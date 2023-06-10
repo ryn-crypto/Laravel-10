@@ -5,6 +5,9 @@
     <div class="m-4">
         <h1 class="text-center">ini adalah halaman Student </h1>
 
+        <div class="my-5">
+            <a href="students/add" class="btn btn-outline-primary">Add data</a>
+        </div>
         <div class="container m-5">
             <h3>Daftar siswa</h3>
             <table class="table table-striped">

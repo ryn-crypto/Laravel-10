@@ -70,12 +70,15 @@ Route::prefix('administrator')->group(function () {
 // route untuk controller students
 Route::prefix('/students')->group(function () {
     Route::get('', [StudentController::class, 'index']);
-    Route::get('/insert', [StudentController::class, 'insert']);
+    Route::get('/add', [StudentController::class, 'create']);
     Route::get('/update', [StudentController::class, 'update']);
     Route::get('/delete', [StudentController::class, 'delete']);
     Route::get('/nilai', [StudentController::class, 'nilai']);
     Route::get('/{id}', [StudentController::class, 'show']);
 });
+
+// route untuk tambah data student
+Route::post('insert', [StudentController::class, 'store']);
 
 // route untuk class
 Route::get('/class', [ClassController::class, 'index']);
