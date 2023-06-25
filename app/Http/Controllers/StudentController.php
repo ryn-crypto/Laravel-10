@@ -43,7 +43,7 @@ class StudentController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
         // query builder 
         // -------------
@@ -54,10 +54,16 @@ class StudentController extends Controller
 
         // elequent 
         // -------------
-        Student::findOrFail(28)->update([
-            'name' => 'ini juga di ganti',
-            'class_id' => 1
-        ]);
+        // Student::findOrFail(28)->update([
+        //     'name' => 'ini juga di ganti',
+        //     'class_id' => 1
+        // ]);
+
+        // proses update data 
+        $student = Student::findOrFail($id);
+        $student->update($request->all());
+        return redirect('/students');
+
     }
 
     public function delete()
@@ -148,5 +154,12 @@ class StudentController extends Controller
         $student = Student::create($request->all());
 
         return redirect('/students');
+    }
+
+    public function edit(Request $request, $id) 
+    {
+        $student = Student::with('class')->findOrFail($id);
+        $classList = ClassRoom::get(['id', 'name']);
+        return view('student-edit', ['student' => $student, 'classList' => $classList]);
     }
 }

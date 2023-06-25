@@ -33,7 +33,9 @@
                                     {{ 'Perempuan' }}
                                 @endif
                             </td>
-                            <td><a class="btn btn-outline-warning" href="students/{{ $data->id }}">Detail</a></td>
+                            <td><a class="btn btn-outline-info" href="students/{{ $data->id }}">Detail</a>
+                                <a class="btn btn-outline-warning" href="students/edit/{{ $data->id }}">Edit</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

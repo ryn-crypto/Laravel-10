@@ -71,7 +71,8 @@ Route::prefix('administrator')->group(function () {
 Route::prefix('/students')->group(function () {
     Route::get('', [StudentController::class, 'index']);
     Route::get('/add', [StudentController::class, 'create']);
-    Route::get('/update', [StudentController::class, 'update']);
+    Route::get('/edit/{id}', [StudentController::class, 'edit']);
+    Route::post('/update/{id}', [StudentController::class, 'update']);
     Route::get('/delete', [StudentController::class, 'delete']);
     Route::get('/nilai', [StudentController::class, 'nilai']);
     Route::get('/{id}', [StudentController::class, 'show']);
