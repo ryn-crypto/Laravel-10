@@ -9,6 +9,11 @@
             <a href="students/add" class="btn btn-outline-primary">Add data</a>
         </div>
         <div class="container m-5">
+            @if (Session::has('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
             <h3>Daftar siswa</h3>
             <table class="table table-striped">
                 <thead>
