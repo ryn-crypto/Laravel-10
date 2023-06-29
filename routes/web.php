@@ -73,7 +73,7 @@ Route::prefix('/students')->group(function () {
     Route::get('/add', [StudentController::class, 'create']);
     Route::get('/edit/{id}', [StudentController::class, 'edit']);
     Route::post('/update/{id}', [StudentController::class, 'update']);
-    Route::get('/delete', [StudentController::class, 'delete']);
+    Route::get('/delete/{id}', [StudentController::class, 'delete']);
     Route::get('/nilai', [StudentController::class, 'nilai']);
     Route::get('/{id}', [StudentController::class, 'show']);
 });

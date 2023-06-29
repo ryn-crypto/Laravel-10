@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentCreateRequest;
 use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
@@ -64,10 +65,9 @@ class StudentController extends Controller
         $student = Student::findOrFail($id);
         $student->update($request->all());
         return redirect('/students');
-
     }
 
-    public function delete()
+    public function delete($id)
     {
         // query builder 
         // -------------
@@ -75,7 +75,16 @@ class StudentController extends Controller
 
         // elequent 
         // -------------
-        Student::find(28)->delete();
+        // Student::find(28)->delete();
+
+        // hapus data sesuai dengan id yang dikirimkan
+        $student = Student::findOrFail($id)->delete();
+        if ($student) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'deleted student data success !');
+        }
+
+        return redirect('/students');
     }
 
     public function nilai()
@@ -127,20 +136,20 @@ class StudentController extends Controller
         dd($nilai_x2);
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $student = Student::with(['class.teacher', 'extrakurikulers'])
             ->findOrFail($id);
         return view('student-detail', ['detail' => $student]);
     }
 
-    public function create() 
+    public function create()
     {
         $class = ClassRoom::select('id', 'name')->get();
         return view('students-create', ['class' => $class]);
     }
 
-    public function store(Request $request) 
+    public function store(StudentCreateRequest $request)
     {
         // $student = new Student;
         // $student-> name = $request->name;
@@ -149,6 +158,14 @@ class StudentController extends Controller
         // $student-> class_id = $request->class_id;
 
         // $student->save();
+
+        // validate form (digunakan pada file studentcreateRequest)
+        // $validation = $request->validate([
+        //     'nis' => 'unique:students,nis|max:10|required',
+        //     'name' => 'required',
+        //     'gender' => 'required',
+        //     'class_id' => 'required'
+        // ]);
 
         // =========================
         // menggunakan must asignment
@@ -161,7 +178,7 @@ class StudentController extends Controller
         return redirect('/students');
     }
 
-    public function edit(Request $request, $id) 
+    public function edit(Request $request, $id)
     {
         $student = Student::with('class')->findOrFail($id);
         $classList = ClassRoom::get(['id', 'name']);

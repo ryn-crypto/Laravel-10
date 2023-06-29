@@ -40,11 +40,36 @@
                             </td>
                             <td><a class="btn btn-outline-info" href="students/{{ $data->id }}">Detail</a>
                                 <a class="btn btn-outline-warning" href="students/edit/{{ $data->id }}">Edit</a>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                    data-bs-id="{{ $data->id }}" data-bs-name="{{ $data->name }}"
+                                    data-bs-target="#exampleModal">
+                                    delete
+                                </button>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="modal" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus data ini ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form method="get">
+                        @csrf
+                        <a href="" id="delete" type="submit" class="btn btn-danger">Hapus data</a>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
