@@ -74,6 +74,8 @@ Route::prefix('/students')->group(function () {
     Route::get('/edit/{id}', [StudentController::class, 'edit']);
     Route::post('/update/{id}', [StudentController::class, 'update']);
     Route::get('/delete/{id}', [StudentController::class, 'delete']);
+    Route::get('/deleted', [StudentController::class, 'deletedStudents']);
+    Route::get('/{id}/restore', [StudentController::class, 'restore']);
     Route::get('/nilai', [StudentController::class, 'nilai']);
     Route::get('/{id}', [StudentController::class, 'show']);
 });

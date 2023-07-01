@@ -184,4 +184,22 @@ class StudentController extends Controller
         $classList = ClassRoom::get(['id', 'name']);
         return view('student-edit', ['student' => $student, 'classList' => $classList]);
     }
+
+    public function deletedStudents()
+    {
+        $deletedStudents = Student::onlyTrashed()->get();
+        return view('student-deleted-list', ['deletedStudent' => $deletedStudents]);
+    }
+
+    public function restore($id)
+    {
+        $deletedStudents = Student::withTrashed()->where('id', $id)->restore();
+
+        if ($deletedStudents) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'restored data success !');
+        }
+
+        return redirect('/students');
+    }
 }

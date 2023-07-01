@@ -49,21 +49,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <script>
-        var exampleModal = document.getElementById('exampleModal')
-        exampleModal.addEventListener('show.bs.modal', function(event) {
-            var button = event.relatedTarget
-
-            var iddelete = button.getAttribute('data-bs-id');
-            var namedelete = button.getAttribute('data-bs-name');
-
-            var formdelete = document.getElementById('delete')
-            var modalTitle = exampleModal.querySelector('.modal-title')
-
-            modalTitle.textContent = 'Hapus data ' + namedelete
-            formdelete.setAttribute("href", '/students/delete/' + iddelete)
-        })
-    </script>
 </body>
 
 </html>
