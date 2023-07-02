@@ -11,8 +11,11 @@ use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // keyword
+        $keyword = $request->keyword;
+
         // query builder
         // -------------------
         // $student = DB::table('students')->get();
@@ -20,7 +23,14 @@ class StudentController extends Controller
 
         // elequent
         // -------------------
-        $student = Student::paginate(20);
+        $student = Student::with('class')
+            ->where('name', 'LIKE', "%" . $keyword . '%')
+            ->orWhere('gender', $keyword)
+            ->orWhere('nis', 'LIKE', "%" . $keyword . '%')
+            ->orWhereHas('class', function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', "%" . $keyword . '%');
+            })
+            ->paginate(20);
         return view('student', ['studentList' => $student]);
     }
 

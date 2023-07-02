@@ -15,7 +15,19 @@
           {{ Session::get('message') }}
         </div>
       @endif
-      <h3>Daftar siswa</h3>
+      <div class="row my-3">
+        <div class="col-6">
+          <h3>Daftar siswa</h3>
+        </div>
+        <div class="col-5 d-flex justify-content-end">
+          <form action="" method="GET">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Keyword" name="keyword">
+              <button type="submit" class="input-group-text btn btn-primary" id="basic-addon1">Search</i></button>
+            </div>
+          </form>
+        </div>
+      </div>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -23,6 +35,7 @@
             <th scope="col">Nis</th>
             <th scope="col">Nama</th>
             <th scope="col">Jenis kelamin</th>
+            <th scope="col">Class</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -39,6 +52,9 @@
                   {{ 'Perempuan' }}
                 @endif
               </td>
+              <td>
+                {{ $data->class->name }}
+              </td>
               <td><a class="btn btn-outline-info" href="students/{{ $data->id }}">Detail</a>
                 <a class="btn btn-outline-warning" href="students/edit/{{ $data->id }}">Edit</a>
                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
@@ -51,7 +67,7 @@
         </tbody>
       </table>
       <div class="my-5">
-        {{ $studentList->links() }}
+        {{ $studentList->withQueryString()->links() }}
       </div>
     </div>
   </div>
