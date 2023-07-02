@@ -1,4 +1,4 @@
-@extends('layouts\mainlayout')
+@extends('layouts.mainlayout')
 @section('title', 'Students deleted data')
 
 @section('content')

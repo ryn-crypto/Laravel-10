@@ -20,7 +20,7 @@ class StudentController extends Controller
 
         // elequent
         // -------------------
-        $student = Student::get();
+        $student = Student::paginate(20);
         return view('student', ['studentList' => $student]);
     }
 
