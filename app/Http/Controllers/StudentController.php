@@ -177,6 +177,8 @@ class StudentController extends Controller
         //     'class_id' => 'required'
         // ]);
 
+        return $request->file('foto')->store('foto');
+
         // =========================
         // menggunakan must asignment
         $student = Student::create($request->all());
