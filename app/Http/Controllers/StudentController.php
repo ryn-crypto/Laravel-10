@@ -176,10 +176,18 @@ class StudentController extends Controller
         //     'gender' => 'required',
         //     'class_id' => 'required'
         // ]);
+        $newName = '';
 
-        return $request->file('foto')->store('foto');
+        if ($request->file('foto')) {
+            $extention = $request->file('foto')->getClientOriginalExtension();
+            $newName = $request->name . '-' . now()->timestamp . "." . $extention;
+            $request->file('foto')->storeAs('foto', $newName);
+        }
 
-        // =========================
+        // prepare data
+        $request['image'] = $newName;
+
+        // =========================    
         // menggunakan must asignment
         $student = Student::create($request->all());
         if ($student) {
