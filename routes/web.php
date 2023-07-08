@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ExtrakurikulerController;
 use App\Http\Controllers\TeachersController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +69,7 @@ Route::prefix('administrator')->group(function () {
 });
 
 // route untuk controller students
-Route::prefix('/students')->group(function () {
+Route::prefix('/students')->middleware('auth')->group(function () {
     Route::get('', [StudentController::class, 'index']);
     Route::get('/add', [StudentController::class, 'create']);
     Route::get('/edit/{id}', [StudentController::class, 'edit']);
@@ -80,14 +81,18 @@ Route::prefix('/students')->group(function () {
     Route::get('/{id}', [StudentController::class, 'show']);
 });
 
+// route login
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'authenticate']);
+
 // route untuk tambah data student
-Route::post('insert', [StudentController::class, 'store']);
+Route::post('insert', [StudentController::class, 'store'])->middleware('auth');
 
 // route untuk class
-Route::get('/class', [ClassController::class, 'index']);
+Route::get('/class', [ClassController::class, 'index'])->middleware('auth');
 
 // route untuk controller ekstrakurikuler
-Route::get('/extrakurikuler', [ExtrakurikulerController::class, 'index']);
+Route::get('/extrakurikuler', [ExtrakurikulerController::class, 'index'])->middleware('auth');
 
 // route untuk controller teachers
-Route::get('/teachers', [TeachersController::class, 'index']);
+Route::get('/teachers', [TeachersController::class, 'index'])->middleware('auth');
