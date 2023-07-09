@@ -22,10 +22,10 @@
       @endif
     </div>
     <div class="row mx-auto d-flex align-items-center justify-content-center">
-      <div class="col-4 d-flex justify-content-center ">
+      <div class="col-10 col-md-4 d-flex justify-content-center ">
         <img src="{{ asset('storage/image/login.png') }}" class="card-img-top" alt="...">
       </div>
-      <div class="col-4 d-flex justify-content-center">
+      <div class="col-12 col-md-4 d-flex justify-content-center">
         <div class="card-body">
           <h5 class="card-title">Login Page</h5>
           <form method="POST" action="/login">

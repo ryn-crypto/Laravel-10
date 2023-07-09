@@ -20,7 +20,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->middleware('auth');
 
 // Route::get('/about', function () {
 //     return view('about', ['name' => 'riyan', 'phone' => '0812xxxxx']`);
@@ -65,16 +65,16 @@ Route::prefix('administrator')->group(function () {
 });
 
 // route untuk controller students
-Route::prefix('/students')->middleware('auth')->group(function () {
-    Route::get('', [StudentController::class, 'index']);
-    Route::get('/add', [StudentController::class, 'create']);
-    Route::get('/edit/{id}', [StudentController::class, 'edit']);
-    Route::post('/update/{id}', [StudentController::class, 'update']);
-    Route::get('/delete/{id}', [StudentController::class, 'delete']);
-    Route::get('/deleted', [StudentController::class, 'deletedStudents']);
-    Route::get('/{id}/restore', [StudentController::class, 'restore']);
-    Route::get('/nilai', [StudentController::class, 'nilai']);
-    Route::get('/{id}', [StudentController::class, 'show']);
+Route::prefix('/students')->group(function () {
+    Route::get('', [StudentController::class, 'index'])->middleware('auth');
+    Route::get('/add', [StudentController::class, 'create'])->middleware(['auth', 'must.admin-or-teacher']);
+    Route::get('/edit/{id}', [StudentController::class, 'edit'])->middleware('auth');
+    Route::post('/update/{id}', [StudentController::class, 'update'])->middleware('auth');
+    Route::get('/delete/{id}', [StudentController::class, 'delete'])->middleware(['auth', 'must.admin']);
+    Route::get('/deleted', [StudentController::class, 'deletedStudents'])->middleware('auth');
+    Route::get('/{id}/restore', [StudentController::class, 'restore'])->middleware('auth');
+    Route::get('/nilai', [StudentController::class, 'nilai'])->middleware('auth');
+    Route::get('/{id}', [StudentController::class, 'show'])->middleware(['auth', 'must.admin-or-teacher']);
 });
 
 // route login

@@ -55,12 +55,19 @@
               <td>
                 {{ $data->class->name }}
               </td>
-              <td><a class="btn btn-outline-info" href="students/{{ $data->id }}">Detail</a>
-                <a class="btn btn-outline-warning" href="students/edit/{{ $data->id }}">Edit</a>
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                  data-bs-id="{{ $data->id }}" data-bs-name="{{ $data->name }}" data-bs-target="#exampleModal">
-                  delete
-                </button>
+              <td>
+                @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                  -
+                @else
+                  <a class="btn btn-outline-info" href="students/{{ $data->id }}">Detail</a>
+                  <a class="btn btn-outline-warning" href="students/edit/{{ $data->id }}">Edit</a>
+                  @if (Auth::user()->role_id == 1)
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                      data-bs-id="{{ $data->id }}" data-bs-name="{{ $data->name }}" data-bs-target="#exampleModal">
+                      delete
+                    </button>
+                  @endif
+                @endif
               </td>
             </tr>
           @endforeach
