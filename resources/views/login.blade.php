@@ -13,33 +13,37 @@
 </head>
 
 <body>
-  <div class="vh-100 row d-flex align-items-center justify-content-center">
-    @if (Session::has('failed'))
-      <div class="alert alert-danger" role="alert">
-        {{ Session::get('message') }}
-      </div>
-    @endif
-    <div class="col-4 d-flex justify-content-center ">
-      <img src="{{ asset('storage/image/login.png') }}" class="card-img-top" alt="...">
+  <div class="vh-100">
+    <div class="row-8 d-flex justify-content-center">
+      @if (Session::has('status'))
+        <div class="alert alert-danger" role="alert">
+          {{ Session::get('message') }}
+        </div>
+      @endif
     </div>
-    <div class=" col-4 d-flex justify-content-center">
-      <div class="card-body">
-        <h5 class="card-title">Login Page</h5>
-        <form method="POST" action="/login">
-          @csrf
-          <div class="mb-3">
-            <label for="emailid" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="emailid" placeholder="mail@mail.com" name="email"
-              required>
-          </div>
-          <div class="mb-3">
-            <label for="passwordid" class="form-label">Password</label>
-            <input type="password" class="form-control" id="passwordid" name="password" required>
-          </div>
-          <div class="mb3">
-            <button type="submit" class="btn btn-success form-control">Login </button>
-          </div>
-        </form>
+    <div class="row mx-auto d-flex align-items-center justify-content-center">
+      <div class="col-4 d-flex justify-content-center ">
+        <img src="{{ asset('storage/image/login.png') }}" class="card-img-top" alt="...">
+      </div>
+      <div class="col-4 d-flex justify-content-center">
+        <div class="card-body">
+          <h5 class="card-title">Login Page</h5>
+          <form method="POST" action="/login">
+            @csrf
+            <div class="mb-3">
+              <label for="emailid" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="emailid" placeholder="mail@mail.com" name="email"
+                required>
+            </div>
+            <div class="mb-3">
+              <label for="passwordid" class="form-label">Password</label>
+              <input type="password" class="form-control" id="passwordid" name="password" required>
+            </div>
+            <div class="mb3">
+              <button type="submit" class="btn btn-success form-control">Login </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

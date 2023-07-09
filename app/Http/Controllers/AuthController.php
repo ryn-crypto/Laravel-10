@@ -23,10 +23,21 @@ class AuthController extends Controller
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
 
-            return redirect()->instead('/');
+            return redirect()->intended('/');
         }
 
         Session::flash('status', 'failed');
-        Session::flash('message', 'no valid email');
+        Session::flash('message', "email does't register !!");
+
+        return redirect('/login');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

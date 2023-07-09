@@ -19,11 +19,7 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return view('home', [
-        'name' => 'riyan',
-        'role' => 'test',
-        'buah' => ['semangka', 'nanas', 'pisang', 'mangga', 'jambu', 'jeruk']
-    ]);
+    return view('home');
 });
 
 // Route::get('/about', function () {
@@ -82,8 +78,11 @@ Route::prefix('/students')->middleware('auth')->group(function () {
 });
 
 // route login
-Route::get('login', [AuthController::class, 'login'])->name('login');
-Route::post('login', [AuthController::class, 'authenticate']);
+Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('login', [AuthController::class, 'authenticate'])->middleware('guest');
+
+// logout route
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
 // route untuk tambah data student
 Route::post('insert', [StudentController::class, 'store'])->middleware('auth');
